@@ -1,4 +1,49 @@
-# X
+# X.py
+
+X.pyはStardust✨が考えるX APIを使用する上であったらいいなと思う機能のコレクションです。
+
+## 任意の文字列を投稿する
+
+ * メッセージを指定する
+
+```
+┌──(venv)(stardust✨stardust)-[~/X]
+└─$ python X.py post 'Hello Lain ;-)'
+投稿中: Hello Lain ;-)
+✅ 投稿成功！
+ツイートID: 2008619925594927145
+URL: https://x.com/i/web/status/2008619925594927145
+```
+
+ * EOFで渡す
+
+```
+┌──(venv)(stardust✨stardust)-[~/X]
+└─$ python X.py post -i << EOF
+    /\_/\  
+   ( o.o ) 
+    > ^ <
+EOF
+投稿中:     /\_/\  
+   ( o.o ) 
+    > ^ <
+✅ 投稿成功！
+ツイートID: 2008620529474040197
+URL: https://x.com/i/web/status/2008620529474040197
+```
+
+ * コマンドの出力を渡す
+
+```
+┌──(venv)(stardust✨stardust)-[~/X]
+└─$ date | python X.py post -i
+投稿中: 2026-01-07 04:36:54
+✅ 投稿成功！
+ツイートID: 2008623808174059729
+URL: https://x.com/i/web/status/2008623808174059729
+```
+
+## Pyton環境のセットアップ
 
 ```
 ┌──(stardust✨stardust)-[~/X]
@@ -22,18 +67,14 @@ Python 3.12.8
 Python 3.12.8
 ```
 
-# X APIを使用してXにHello Worldを投稿したい。
-
-## セットアップ
-
-### 1. 依存関係のインストール
+## 依存関係のインストール
 
 ```bash
 ┌──(venv)(stardust✨stardust)-[~/X]
 └─$ pip install -r requirements.txt
 ```
 
-### 2. X API認証情報の設定
+### X API認証情報の設定
 
 1. https://developer.x.com でDeveloperアカウントを作成
 2. ProjectとAppを作成し、Read/Write権限を設定
@@ -48,28 +89,3 @@ X_ACCESS_TOKEN_SECRET=your_access_token_secret_here
 X_BEARER_TOKEN=your_bearer_token_here
 ```
 
-### 3. 実行
-
-```bash
-┌──(venv)(stardust✨stardust)-[~/X]
-└─$ python hello_world.py
-投稿中: Hello World
-✅ 投稿成功！
-ツイートID: 2008603481293418556
-URL: https://x.com/i/web/status/2008603481293418556
-```
-
-これでXに「Hello World」が投稿されます。
-
-## ファイル構成
-
-- `hello_world.py` - メインの投稿スクリプト
-- `requirements.txt` - 必要なPythonパッケージ
-- `.gitignore` - Gitで除外するファイル（.envなど）
-- `.env` - API認証情報（このファイルはGitにコミットしないでください）
-
-## 注意事項
-
-- `.env`ファイルには機密情報が含まれるため、Gitにコミットしないでください
-- X APIの無料ティアでは月500投稿まで可能です
-- スパム行為はアカウント凍結の原因となるため、適切な使用を心がけてください
